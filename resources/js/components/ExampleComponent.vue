@@ -3,8 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Example Component</div>
-
+                    <div class="card-header">Testing Compo</div>
                     <div class="card-body">
                         <form @submit.prevent="post()" class="form-horizontal">
                             <div class="form-group">
@@ -21,9 +20,8 @@
                         </form>
                         <ul class="list-group">
                             <li class="list-group-item" v-for="item in items">
-                                <p>{{item.id}} {{item.title}}</p>
-                                <p>{{title.description}}</p>
-
+                                <p>{{item.id}}. {{item.title}}</p>
+                                <p>{{item.description}}</p>
                             </li>
                         </ul>
                     </div>
@@ -42,8 +40,11 @@
                 items:[]
             }
         },
-        mounted() {
-
+        created() {
+            console.log('hello')
+            axios.get('/api/todo/').then(res=>{
+                this.items=res.data
+            })
         },
         methods:{
             post(){
